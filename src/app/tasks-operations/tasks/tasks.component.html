@@ -1,0 +1,56 @@
+<div class="container p-4 ">
+
+    <!-- tasks header -->
+    <section class="tasks-header row align-items-center">
+        <div class="date col  d-flex justify-content-start align-items-center">
+            <label class="day-number pl-1 pr-1">12</label>
+            <div class="date-content d-flex flex-column  align-content-center">
+                <label class="month">JAN</label>
+                <label class="year">2016</label>
+            </div>
+        </div>
+        <div class="day col d-flex justify-content-end align-items-center">
+            <label>TUESDAY</label>
+        </div>
+    </section>
+    <!-- /tasks header -->
+
+    <!-- tasks -->
+    <section #tasksContainer class="tasks row container-fluid pr-1 pl-1 pb-5 d-flex flex-column m-0">
+
+        <form [formGroup]="myForm">
+            <!-- task -->
+            <div class="task col row m-0 p-0 d-flex justify-content-between align-items-center " formArrayName="tasks"
+                *ngFor="let task of myForm.get('tasks')['controls']; let i = index">
+                <ng-container [formGroupName]="i">
+                    <div class="form-group col-9 p-0">
+                        <input type="text" class="text-input form-control"
+                            [ngClass]="{'text-black-50': task.value.done}" formControlName="text"
+                            placeholder="Add a task" />
+                    </div>
+                    <div class="col form-group flex-grow-0 p-0">
+                        <button (click)="removeTask(i)" class="delete-button">
+                        </button>
+                    </div>
+                    <div class="round-checkbox form-group col flex-grow-0 ">
+                        <input type="checkbox" id="{{i}}" formControlName="done" />
+                        <label for="{{i}}"></label>
+                    </div>
+                </ng-container>
+            </div>
+            <!-- task -->
+        </form>
+
+        <!-- add task button -->
+        <button type="button" (click)="addTask()" class="btn btn-circle btn-xl position-absolute text-muted">
+            +</button>
+        <!-- /add task button -->
+
+        <!-- undo removing task button -->
+        <button type="button" class="btn btn-link position-absolute undo-button" (click)="undoRemoveingTask()"
+            *ngIf="lastRemovedTask">undo</button>
+        <!-- /undo removing task button -->
+
+    </section>
+    <!-- /tasks -->
+</div>

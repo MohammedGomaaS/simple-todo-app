@@ -1,1 +1,163 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+@font-face {
+  font-family: ProximaNova;
+  src: url(./assets/fonts/ProximaNova-Regular.otf);
+  font-style: normal;
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: ProximaNova;
+  src: url(./assets/fonts/ProximaNova-Black.otf);
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: ProximaNova;
+  src: url(./assets/fonts/ProximaNova-Bold.otf);
+  font-style: normal;
+  font-weight: bold;
+}
+
+//variables
+$main-font:ProximaNova;
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: $main-font;
+  box-sizing: border-box;
+  font-weight: 200;
+  min-height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.ltr {
+  direction: ltr;
+}
+
+.rtl {
+  direction: rtl;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.tasks-header {
+  label {
+    margin-bottom: 0;
+  }
+
+  .day-number {
+    font-weight: bold;
+    font-size: 60px;
+  }
+
+  .date-content {
+    .month {
+      font-weight: bold;
+    }
+  }
+
+  .day {
+    font-weight: bold;
+  }
+}
+
+.tasks {
+  height: 75vh;
+  overflow-y: scroll;
+
+  .task {
+    .text-input {
+      font-size: 20px;
+
+    }
+
+    .text-input:not(:focus) {
+      border: none;
+      font-weight: 200;
+    }
+
+    .delete-button {
+      width: 25px;
+      height: 25px;
+      border: none;
+      background: none;
+      background-image: url('./assets/icons/trash.svg');
+      background-repeat: no-repeat;
+      background-size: 25px 25px;
+    }
+  }
+
+  .undo-button {
+    bottom: 0;
+  }
+}
+
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  line-height: 1.33;
+  border-radius: 35px;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  background-color: #50e3a4;
+}
+
+.round-checkbox {
+  position: relative;
+
+  label {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 28px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 28px;
+  }
+
+  label:after {
+    border: 2px solid #66bb6a;
+    border-top: none;
+    border-right: none;
+    content: "";
+    height: 6px;
+    left: 4px;
+    opacity: 0;
+    position: absolute;
+    top: 6px;
+    transform: rotate(-45deg);
+    width: 12px;
+  }
+
+  input[type="checkbox"] {
+    visibility: hidden;
+  }
+
+  input[type="checkbox"]:checked+label {
+    background-color: #fff;
+    border: 3px solid #66bb6a;
+
+  }
+
+  input[type="checkbox"]:checked+label:after {
+    opacity: 1;
+  }
+}
